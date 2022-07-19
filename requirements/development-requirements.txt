@@ -1,0 +1,10 @@
+# load common requirements
+-r common-requirements.txt
+
+# standard imports
+pytest
+autopep8
+pylint
+coverage
+
+

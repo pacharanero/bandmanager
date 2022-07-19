@@ -1,0 +1,6 @@
+# this file contains the requirements that are common to both live and development
+
+# standard imports
+
+# third party imports
+Django
