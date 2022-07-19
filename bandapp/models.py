@@ -27,9 +27,9 @@ class Song(TimeStampedModel):
     Song model
     """
     title = models.CharField(max_length=300)
-    original_artist = models.CharField(max_length=300)
-    tempo = models.IntegerField(max_length=4)
-    key = models.CharField(max_length=50)
+    original_artist = models.CharField(max_length=300, blank=True, default='')
+    tempo = models.IntegerField(blank=True, null=True)
+    key = models.CharField(max_length=50, blank=True, default='')
 
 
 class Setlist(TimeStampedModel):
@@ -37,4 +37,9 @@ class Setlist(TimeStampedModel):
     Setlist model
     """
     title = models.CharField(max_length=300)
-    songs = models.ManyToManyField(Song)
+    songs = models.ManyToManyField(Song, blank=True)
+
+class Band(models.Model):
+    name = models.CharField(max_length=300)
+    location = models.CharField(max_length=300, blank=True, default='')
+    twitter = models.CharField(max_length=300, blank=True, default='')

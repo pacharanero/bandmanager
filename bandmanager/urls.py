@@ -18,9 +18,13 @@ from django.urls import include, path
 
 from bandapp.views import SetlistListView
 
+admin.site.site_header = "Band Manager"
+admin.site.site_title = "Band Manager Portal"
+admin.site.index_title = "Welcome to Band Manager"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
     path('setlists/', SetlistListView.as_view(), name="setlist-list"),
-
+    # path('/', view=v)
 ]
