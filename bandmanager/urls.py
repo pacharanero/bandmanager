@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from bandapp.views import SetlistListView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
+    path('setlists/', SetlistListView.as_view(), name="setlist-list"),
+
 ]
