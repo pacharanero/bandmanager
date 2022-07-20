@@ -5,27 +5,19 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Tempo</th>
-      <th>Key</th>
-      <th>Setlists Count</th>
+      <th>Songs Count</th>
+      <th>tags</th>
     </tr>
   </thead>
   <tbody>
-    {% for song in object_list %}
+    {% for setlist in object_list %}
     <tr>
-      <td data-label="song.title">{{ song.title }}</td>
-      <td data-label="song.tempo">{{ song.tempo }}</td>
-      <td data-label="song.key">{{ song.key }}</td>
-      <td data-label="song.setlist_set.count">{{ song.setlist_set.count }}</td>
+      <td data-label="setlist.title">{{ setlist.title }}</td>
+      <td data-label="setlist.songs.count">{{ setlist.songs.count }}</td>
     </tr>
   {% empty %}
-  <tr class="disabled"><td>No songs yet</td></tr>
+  <tr class="disabled"><td>No setlists yet</td></tr>
   {% endfor %}
   </tbody>
 </table>
-<ul>
-  
-  <li></li>
-
-</ul>
 {% endblock content %}
