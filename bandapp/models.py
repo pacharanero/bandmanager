@@ -26,7 +26,6 @@ class Tag(models.Model):
     """
     Tag model
     """
-    group = models.CharField(max_length=30)
     text = models.CharField(max_length=30)
 
 
