@@ -21,3 +21,7 @@ class SongListView(ListView):
 class GigListView(ListView):
     model = Gig
     paginate_by = 20
+
+def sandbox(request):
+    context = {}
+    return render(request, 'bandapp/sandbox.html', context)
