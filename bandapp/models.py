@@ -40,7 +40,6 @@ class Song(TimeStampedModel):
     tags = models.ManyToManyField(Tag, blank=True, related_name="songs")
     tempo = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=300)
-    title = models.CharField(max_length=300)
     video_url = models.URLField(blank=True, default='')
 
 
