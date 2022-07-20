@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from bandapp.views import SetlistListView
+from bandapp.views import SetlistListView, SongListView, index
 
 admin.site.site_header = "Band Manager"
 admin.site.site_title = "Band Manager Portal"
@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
     path('setlists/', SetlistListView.as_view(), name="setlist-list"),
-    # path('/', view=v)
+    path('songs/', SongListView.as_view(), name="song-list"),
+    path('', index, name="index"),
 ]

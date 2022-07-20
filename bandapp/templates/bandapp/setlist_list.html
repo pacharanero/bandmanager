@@ -1,8 +1,12 @@
-<h1>Setlists</h1>
-<ul>
-  {% for setlist in object_list %}
-  <li>{{ setlist.title }}</li>
-  {% empty %}
-  <li>No setlists yet.</li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Setlists</h1>
+  <ul>
+    {% for setlist in object_list %}
+    <li>{{ setlist.title }}</li>
+    {% empty %}
+    <li>No setlists yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
