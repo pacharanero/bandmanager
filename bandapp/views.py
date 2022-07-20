@@ -2,7 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.list import ListView
 
-from .models import Setlist, Song, Gig
+from .models import (
+    Band,
+    Gig,
+    Setlist,
+    Song,
+    Tag,
+)
 
 
 def index(request):
@@ -10,17 +16,21 @@ def index(request):
     context = {}
     return render(request, 'bandapp/index.html', context)
 
+
 class SetlistListView(ListView):
     model = Setlist
     paginate_by = 20
+
 
 class SongListView(ListView):
     model = Song
     paginate_by = 20
 
+
 class GigListView(ListView):
     model = Gig
     paginate_by = 20
+
 
 def sandbox(request):
     context = {}

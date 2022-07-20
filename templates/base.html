@@ -17,7 +17,7 @@
 
   <body id="root">
 
-    {% comment %} Main navigation {% endcomment %}
+    <!-- Main navigation -->
     <div class="ui menu">
       <div class="header item">Bandmanager</div>
       <a class="active item" href={% url 'setlist-list' %}>Setlists</a>
@@ -28,18 +28,27 @@
       </div>
     </div>
 
-    {% comment %} Title {% endcomment %}
+    <!-- Title -->
     <h1>
       {% block title %}
       {% endblock %}
     </h1>
 
-    {% comment %} Main content section {% endcomment %}
+    <!-- Main content section -->
     <div id="content">
       {% block content %}
       {% endblock content %}
     </div>
-
+    
+    <footer>
+      {% block footer %}
+        <div class="ui inverted vertical footer segment">
+          <div class="ui container">
+          ⓒ Bandmanager 2022. AGPL v3 Licensed Open Source
+          </div>
+        </div>
+      {% endblock footer %}
+    </footer>
 
   </body>
 
