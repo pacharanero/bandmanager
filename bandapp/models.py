@@ -43,3 +43,10 @@ class Band(models.Model):
     name = models.CharField(max_length=300)
     location = models.CharField(max_length=300, blank=True, default='')
     twitter = models.CharField(max_length=300, blank=True, default='')
+
+class Gig(TimeStampedModel):
+    """
+    Gigs temporary model
+    """
+    title = models.CharField(max_length=300)
+    songs = models.ManyToManyField(Song, blank=True)

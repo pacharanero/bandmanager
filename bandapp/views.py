@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.list import ListView
 
-from .models import Setlist, Song
+from .models import Setlist, Song, Gig
 
 
 def index(request):
@@ -16,4 +16,8 @@ class SetlistListView(ListView):
 
 class SongListView(ListView):
     model = Song
+    paginate_by = 20
+
+class GigListView(ListView):
+    model = Gig
     paginate_by = 20

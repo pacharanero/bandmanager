@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Gigs</h1>
+  <ul>
+    {% for setlist in object_list %}
+    <li>{{ setlist.title }}</li>
+    {% empty %}
+    <li>No gigs yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

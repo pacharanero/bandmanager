@@ -27,5 +27,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('setlists/', SetlistListView.as_view(), name="setlist-list"),
     path('songs/', SongListView.as_view(), name="song-list"),
+    path('gigs/', SetlistListView.as_view(), name="setlist-list"),
     path('', index, name="index"),
 ]
