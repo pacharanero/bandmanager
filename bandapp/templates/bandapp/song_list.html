@@ -1,12 +1,31 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<h1>Repertoire</h1>
 
-{% block content %}
-  <h1>Songs</h1>
-  <ul>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tempo</th>
+      <th>Key</th>
+      <th>Setlists Count</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for song in object_list %}
-    <li>{{ song.title }}</li>
-    {% empty %}
-    <li>No songs yet.</li>
-    {% endfor %}
-  </ul>
+    <tr>
+      <td data-label="song.title">{{ song.title }}</td>
+      <td data-label="song.tempo">{{ song.tempo }}</td>
+      <td data-label="song.key">{{ song.key }}</td>
+      <td data-label="song.setlist_set.count">{{ song.setlist_set.count }}</td>
+    </tr>
+  {% empty %}
+  <tr class="disabled"><td>No songs yet</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<ul>
+  
+  <li></li>
+
+</ul>
 {% endblock content %}

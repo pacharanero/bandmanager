@@ -12,8 +12,8 @@ def index(request):
 
 class SetlistListView(ListView):
     model = Setlist
-    paginate_by = 50
+    paginate_by = 20
 
 class SongListView(ListView):
     model = Song
-    paginate_by = 100
+    paginate_by = 20
