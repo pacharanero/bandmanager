@@ -4,3 +4,4 @@
 
 # third party imports
 Django
+psycopg2-binary
