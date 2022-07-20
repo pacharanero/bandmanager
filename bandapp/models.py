@@ -32,21 +32,45 @@ class Song(TimeStampedModel):
     key = models.CharField(max_length=50, blank=True, default='')
 
 
+class Tag(models.Model):
+    """
+    Tag model
+    """
+    text = models.CharField(max_length=30)
+    group = models.CharField(max_length=30)
+
+
 class Setlist(TimeStampedModel):
     """
     Setlist model
     """
     title = models.CharField(max_length=300)
     songs = models.ManyToManyField(Song, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+
 
 class Band(models.Model):
+    """
+    Band model
+    """
     name = models.CharField(max_length=300)
     location = models.CharField(max_length=300, blank=True, default='')
+    phone = models.CharField()
     twitter = models.CharField(max_length=300, blank=True, default='')
+    facebook = models.CharField(max_length=300, blank=True, default='')
+    instagram = models.CharField(max_length=300, blank=True, default='')
+    soundcloud = models.CharField(max_length=300, blank=True, default='')
+    bandcamp = models.CharField(max_length=300, blank=True, default='')
+    youtube = models.CharField(max_length=300, blank=True, default='')
+    tags = models.ManyToManyField(Tag, blank=True)
+
 
 class Gig(TimeStampedModel):
     """
-    Gigs temporary model
+    Gig model
     """
-    title = models.CharField(max_length=300)
-    songs = models.ManyToManyField(Song, blank=True)
+    location = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    setlist = models.ManyToManyField(Setlist, blank=True)
+    date = models.DateField
+    tags = models.ManyToManyField(Tag, blank=True)
