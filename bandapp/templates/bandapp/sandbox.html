@@ -3,43 +3,20 @@
 {% block title %}sandbox{% endblock %}
 
 {% block content %}
-<div class="ui form">
-    <div class="six wide inline field">
-      <label>Label Name</label>
-      <input type="text" placeholder="Label Name">
-    </div>
-    <div class="six wide inline field">
-        <label>Label Type</label>
-            <select class="ui search dropdown">
-            <option value="">--Label Type--</option>
-            <option value="genre">Genre</option>
-            <option value="tempo">Tempo</option>
-            <option value="custom">Custom Label</option>
-        </select>
-    </div>
-</div>
-<div>
-    <button class="ui button">Add Label</button>
-</div>
-<a class="ui pink label">
-    <i class="file image icon"></i>
-    <div class="detail">Label Type</div>
-    Label Name
-  </a>
-<a class="ui blue label">
+<div class="ui orange label">
+    tag name
+    <i class="delete icon"></i>
+  </div>
+  <div class="ui yellow label">
     Rockabilly
-    <i class="play icon"></i>
-    <div class="detail">Genre</div>
-  </a>
-  <a class="ui teal label">
-    Fast
-    <div class="detail">Tempo</div>
-    <i class="fighter jet icon"></i>
-  </a>
-  <a class="ui yellow label">
-    <i class="tag icon"></i>
+    <i class="delete icon"></i>
+  </div>
+  <div class="ui olive label">
+    Sicknotes
+    <i class="delete icon"></i>
+  </div>
+  <div class="ui green label">
     Easy Lyrics
-    <div class="detail">Custom label</div>
-  </a>
-
+    <i class="delete icon"></i>
+  </div>
 {% endblock content %}
