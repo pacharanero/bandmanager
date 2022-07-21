@@ -24,7 +24,7 @@ admin.site.index_title = "Welcome to Band Manager"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls')),
+    path('accounts/', include("django.contrib.auth.urls")),
     path('setlists/', SetlistListView.as_view(), name="setlist-list"),
     path('songs/', SongListView.as_view(), name="song-list"),
     path('gigs/', SetlistListView.as_view(), name="setlist-list"),
