@@ -6,5 +6,5 @@ pytest
 autopep8
 pylint
 coverage
-
+pyyaml
 
