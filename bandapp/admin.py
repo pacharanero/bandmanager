@@ -1,6 +1,29 @@
 from django.contrib import admin
 
-from .models import Setlist, Song, Band
+from .models import (
+    Band,
+    Gig,
+    Setlist,
+    Song,
+    Tag,
+)
+
+
+class BandAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'location',
+        'phone',
+        'description',
+    )
+
+
+class GigAdmin(admin.ModelAdmin):
+    list_display = (
+        'location',
+        'date',
+        'description',
+    )
 
 
 class SongInline(admin.TabularInline):
@@ -8,14 +31,35 @@ class SongInline(admin.TabularInline):
     extra = 3
 
 
-
 class SetlistAdmin(admin.ModelAdmin):
-    fields = ['title']
+    list_display = ('title', 'description')
+
     inlines = [
         SongInline,
     ]
 
 
+class SongAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'original_artist',
+        'tempo',
+        'key',
+        'notes',
+        'chart_url',
+        'video_url',
+    )
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = (
+        'text',
+        'colour',
+    )
+
+
 admin.site.register(Setlist, SetlistAdmin)
-admin.site.register(Song)
-admin.site.register(Band)
+admin.site.register(Song, SongAdmin)
+admin.site.register(Band, BandAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Gig, GigAdmin)
