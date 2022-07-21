@@ -9,6 +9,9 @@ from uuid import uuid4
 # third party imports
 from django.db import models
 
+# local imports
+from .constants import colour_options
+
 
 class TimeStampedModel(models.Model):
     """
@@ -27,6 +30,10 @@ class Tag(models.Model):
     Tag model
     """
     text = models.CharField(max_length=30)
+    colour = models.CharField(max_length=6, blank=True, default='blue', choices=colour_options.OPTIONS)
+
+    def __str__(self):
+        return self.text
 
 
 class Song(TimeStampedModel):
@@ -42,6 +49,8 @@ class Song(TimeStampedModel):
     title = models.CharField(max_length=300)
     video_url = models.URLField(blank=True, default='')
 
+    def __str__(self):
+        return self.title
 
 class Setlist(TimeStampedModel):
     """
@@ -52,6 +61,8 @@ class Setlist(TimeStampedModel):
     tags = models.ManyToManyField(Tag, blank=True, related_name="setlists")
     title = models.CharField(max_length=300)
 
+    def __str__(self):
+        return self.title
 
 class Band(models.Model):
     """
@@ -69,13 +80,18 @@ class Band(models.Model):
     twitter = models.CharField(max_length=300, blank=True, default='')
     youtube = models.CharField(max_length=300, blank=True, default='')
 
+    def __str__(self):
+        return self.name
 
 class Gig(TimeStampedModel):
     """
     Gig model
     """
-    date = models.DateField
+    date = models.DateField()
     description = models.TextField(blank=True)
     location = models.CharField(max_length=300)
     setlist = models.ManyToManyField(Setlist, blank=True)
     tags = models.ManyToManyField(Tag, blank=True, related_name="gigs")
+
+    def __str__(self):
+        return f'{self.location} | {self.date}'
