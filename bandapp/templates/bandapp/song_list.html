@@ -25,7 +25,7 @@
       <td data-label="song.setlists.count">{{ song.setlists.count }}</td>
       <td data-label="song.tags">
         {% for tag in song.tags.all %}
-        <div class="ui {{ tag.colour }} tag label">{{ tag.text }}</div>
+        <div class="ui {{ tag.colour }} label">{{ tag.text }}</div>
         {% endfor %}
       </td>
       <td data-label="song.notes">{{ song.notes }}</td>
