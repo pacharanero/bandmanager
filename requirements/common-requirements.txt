@@ -5,3 +5,4 @@
 # third party imports
 Django
 psycopg2-binary
+django-colorfield
