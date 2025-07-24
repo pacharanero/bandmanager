@@ -20,9 +20,11 @@ from bandapp.views import (
     index,
     sandbox,
     SetlistListView,
+    SetlistDetailView,
     SignUpView,
     SongListView,
     copy_setlist,
+    add_song_to_setlist,
     )
 
 admin.site.site_header = "Band Manager"
@@ -34,6 +36,8 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
     path('signup/', SignUpView.as_view(), name="signup"),
     path('setlists/<uuid:pk>/copy/', copy_setlist, name="setlist-copy"),
+    path('setlists/<uuid:pk>/add-song/', add_song_to_setlist, name='setlist-add-song'),
+    path('setlists/<uuid:pk>/', SetlistDetailView.as_view(), name='setlist-detail'),
     path('setlists/', SetlistListView.as_view(), name="setlist-list"),
     path('songs/', SongListView.as_view(), name="song-list"),
     path('gigs/', SetlistListView.as_view(), name="setlist-list"),
