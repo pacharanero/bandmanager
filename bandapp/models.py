@@ -10,7 +10,7 @@ from uuid import uuid4
 from django.db import models
 
 # local imports
-from .constants import colour_options
+from .constants import COLOUR_OPTIONS, KEY_OPTIONS
 
 
 class TimeStampedModel(models.Model):
@@ -30,7 +30,7 @@ class Tag(models.Model):
     Tag model
     """
     text = models.CharField(max_length=30)
-    colour = models.CharField(max_length=6, blank=True, default='blue', choices=colour_options.OPTIONS)
+    colour = models.CharField(max_length=6, blank=True, default='blue', choices=COLOUR_OPTIONS)
 
     def __str__(self):
         return self.text
@@ -41,7 +41,7 @@ class Song(TimeStampedModel):
     Song model
     """
     chart_url = models.URLField(blank=True, default='')
-    key = models.CharField(max_length=50, blank=True, default='')
+    key = models.CharField(max_length=50, blank=True, default='', choices=KEY_OPTIONS)
     notes = models.TextField(blank=True)
     original_artist = models.CharField(max_length=300, blank=True, default='')
     tags = models.ManyToManyField(Tag, blank=True, related_name="songs")
