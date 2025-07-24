@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+
+<div class="ui grid">
+  <div class="eight wide column">
+    <h3>Setlist Songs</h3>
+    <table id="setlist-songs" class="ui celled table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Original Artist</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for song in object.songs.all %}
+        <tr>
+          <td>{{ song.title }}</td>
+          <td>{{ song.original_artist }}</td>
+        </tr>
+        {% empty %}
+        <tr class="disabled"><td colspan="2">No songs yet</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="eight wide column">
+    <h3>All Songs</h3>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Original Artist</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for song in songs %}
+        <tr class="song-item" data-song-id="{{ song.id }}">
+          <td>{{ song.title }}</td>
+          <td>{{ song.original_artist }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.song-item').forEach(function(el){
+    el.draggable = true;
+    el.addEventListener('dragstart', function(ev){
+      ev.dataTransfer.setData('text/plain', el.dataset.songId);
+    });
+  });
+
+  var dropZone = document.getElementById('setlist-songs');
+  dropZone.addEventListener('dragover', function(ev){
+    ev.preventDefault();
+  });
+  dropZone.addEventListener('drop', function(ev){
+    ev.preventDefault();
+    const songId = ev.dataTransfer.getData('text/plain');
+    fetch('{% url "setlist-add-song" object.pk %}', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': '{{ csrf_token }}',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'song_id=' + songId
+    }).then(function(){
+      window.location.reload();
+    });
+  });
+</script>
+{% endblock content %}

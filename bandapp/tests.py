@@ -48,3 +48,16 @@ class SetlistCopyTest(TestCase):
         response = self.client.get(reverse("setlist-copy", args=[self.setlist.pk]))
         self.assertRedirects(response, reverse("setlist-list"))
         self.assertEqual(Setlist.objects.count(), 2)
+
+
+class AddSongToSetlistTest(TestCase):
+    def setUp(self):
+        self.song1 = Song.objects.create(title="Song 1")
+        self.setlist = Setlist.objects.create(title="My Set")
+
+    def test_add_song_view(self):
+        url = reverse("setlist-add-song", args=[self.setlist.pk])
+        response = self.client.post(url, {"song_id": self.song1.pk})
+        self.assertEqual(response.status_code, 200)
+        self.setlist.refresh_from_db()
+        self.assertIn(self.song1, self.setlist.songs.all())
