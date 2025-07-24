@@ -3,6 +3,6 @@
 # standard imports
 
 # third party imports
-Django
+Django==5.2.4
 psycopg2-binary
 django-colorfield
