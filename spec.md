@@ -12,7 +12,6 @@ An open source band management application
 * Copy a SetList to a new one
 * Drag-and-drop to add Songs to a SetList
 * Song search/filter in list
-* Pick List for Song.key
 * Tag handling for Songs, SetLists, Gigs, Venues etc
 * Sidebar
 * Google Maps embed
