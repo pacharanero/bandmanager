@@ -7,6 +7,7 @@
       <th>Title</th>
       <th>Songs Count</th>
       <th>tags</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,10 @@
     <tr>
       <td data-label="setlist.title">{{ setlist.title }}</td>
       <td data-label="setlist.songs.count">{{ setlist.songs.count }}</td>
+      <td></td>
+      <td>
+        <a href="{% url 'setlist-copy' setlist.pk %}" class="ui button">Copy</a>
+      </td>
     </tr>
   {% empty %}
   <tr class="disabled"><td>No setlists yet</td></tr>

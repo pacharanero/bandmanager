@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.list import ListView
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -44,3 +44,10 @@ class SignUpView(CreateView):
 def sandbox(request):
     context = {}
     return render(request, 'bandapp/sandbox.html', context)
+
+
+def copy_setlist(request, pk):
+    """Duplicate a setlist and redirect to the setlist list."""
+    setlist = get_object_or_404(Setlist, pk=pk)
+    setlist.copy()
+    return redirect('setlist-list')

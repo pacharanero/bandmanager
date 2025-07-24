@@ -64,6 +64,17 @@ class Setlist(TimeStampedModel):
     def __str__(self):
         return self.title
 
+    def copy(self):
+        """Create a duplicate of this setlist including songs and tags."""
+        copy_title = f"{self.title} (Copy)"
+        new_setlist = Setlist.objects.create(
+            title=copy_title,
+            description=self.description,
+        )
+        new_setlist.songs.set(self.songs.all())
+        new_setlist.tags.set(self.tags.all())
+        return new_setlist
+
 class Band(models.Model):
     """
     Band model
